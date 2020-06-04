@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="pl">
     <head>
+    <meta charset="utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
         <!--Import Google Icon Font-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Import materialize.css-->
@@ -60,7 +62,7 @@
           <a href="#search">Wyszukaj</a>
         </li>
         <li>
-          <a href="advertisment.php">Oferty</a>
+           <a href="advertisment.php">Oferty</a>
         </li>
         <li>
           <a href="#popular">Popularne miejsca</a>
@@ -161,7 +163,7 @@
         <div class="col s12 m4">
           <div class="card" style="height: 365px;">
             <div class="card-image">
-              <img src="img/1.jpg" alt="">
+              <img src="images/meksyk.jpg" alt="">
               <span class="card-title">Meksyk</span>
             </div>
             <div class="card-content">
@@ -172,7 +174,7 @@
         <div class="col s12 m4">
           <div class="card" style="height: 365px;">
             <div class="card-image">
-              <img src="img/2.jpg" alt="">
+              <img src="images/bahamy.jpg" alt="">
               <span class="card-title">Bahamy</span>
             </div>
             <div class="card-content">
@@ -183,7 +185,7 @@
         <div class="col s12 m4">
           <div class="card" style="height: 365px;">
             <div class="card-image">
-              <img src="img/3.jpg" alt="">
+              <img src="images/grecja.jpg" alt="">
               <span class="card-title">Grecja</span>
             </div>
             <div class="card-content">
