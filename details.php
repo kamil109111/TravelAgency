@@ -102,20 +102,58 @@ while ($row=mysqli_fetch_array($filter_Result))
                     </div>
                     <div class="col s12 m6">
                         <div class="card-panel grey lighten-3">
-                            <h5>Wypełij formularz</h5>
-                            <div class="input-field">
-                                <input type="text" placeholder="Imię">
-                            </div>
-                            <div class="input-field">
-                                <input type="text" placeholder="Email">
-                            </div>
-                            <div class="input-field">
-                                <input type="text" placeholder="Nr. telefonu">
-                            </div>
-                            <div class="input-field">
-                                <textarea class="materialize-textarea" placeholder="Wpisz wiadomość"></textarea>
-                            </div>
-                            <input type="submit" value="Wyślij" class="btn">
+                            <h5>Złóż zamówienie</h5>
+                            <form action="#">
+
+
+
+
+                                <div class="input-field">
+                                    <input type="text" placeholder="Imię">
+                                </div>
+                                <div class="input-field">
+                                    <input type="text" placeholder="Email">
+                                </div>
+                                <div class="input-field">
+                                    <input type="text" placeholder="Nr. telefonu">
+                                </div>
+                                <p>
+                                    <label>
+                                        <input type="checkbox" class="filled-in" checked="checked" />
+                                        <span>Wyżywienie</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <span>Od</span>
+                                        <input type="text" class="datepicker">
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <span>Do</span>
+                                        <input type="text" class="datepicker">
+                                    </label>
+                                </p>
+								<label>Ilość osób:</label>
+                                <div class="input-field">                                    
+                                    <select>
+                                        <option value="" disabled selected>Wybierz ilość osób</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                    </select>
+
+                                </div>
+
+
+
+                                <input type="submit" value="Wyślij" class="btn">
                         </div>
                     </div>
                 </div>
@@ -176,6 +214,15 @@ while ($row=mysqli_fetch_array($filter_Result))
         // Po kliknięciu w menu na jakiś link, strona nie będzię przeskakiwać tylko przewijać do danej sekcji 
         const ss = document.querySelectorAll('.scrollspy');
         M.ScrollSpy.init(ss, {});
+
+        //Datapicker
+
+        const dp = document.querySelectorAll('.datepicker');
+        M.Datepicker.init(dp,{});
+
+        //Selector
+        const os = document.querySelectorAll('select');
+        M.FormSelect.init(os,{});
         </script>
 
     </body>
