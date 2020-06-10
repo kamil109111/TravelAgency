@@ -15,11 +15,16 @@ while ($row=mysqli_fetch_array($filter_Result))
 	$description=$row['description'];
 	$priceforperson=$row['priceforperson'];
 	$picture=$row['picture'];
-	$foodpriceforperson=$row['foodpriceforperson'];
+    $foodpriceforperson=$row['foodpriceforperson'];
+    $startdate=$row['startdate'];
+    $Finishdate=$row['finishdate'];
+
 	
 
 }
 
+  
+   
 
 
 	
@@ -103,57 +108,40 @@ while ($row=mysqli_fetch_array($filter_Result))
                     <div class="col s12 m6">
                         <div class="card-panel grey lighten-3">
                             <h5>Złóż zamówienie</h5>
-                            <form action="#">
-
-
-
-
-                                <div class="input-field">
-                                    <input type="text" placeholder="Imię">
-                                </div>
-                                <div class="input-field">
-                                    <input type="text" placeholder="Email">
-                                </div>
-                                <div class="input-field">
-                                    <input type="text" placeholder="Nr. telefonu">
-                                </div>
+                            <form action="summary.php" method="post">
+                            <input type="hidden" name="id" VALUE="<?php echo $pid ?>">
                                 <p>
                                     <label>
-                                        <input type="checkbox" class="filled-in" checked="checked" />
+                                        <input type="checkbox" name="food" class="filled-in" checked="checked"  />
                                         <span>Wyżywienie</span>
                                     </label>
                                 </p>
                                 <p>
                                     <label>
                                         <span>Od</span>
-                                        <input type="text" class="datepicker">
+                                        <div class="input-field">
+                                            <input type="text" class="datepicker" name="date1">
+                                        </div>
                                     </label>
                                 </p>
                                 <p>
                                     <label>
                                         <span>Do</span>
-                                        <input type="text" class="datepicker">
+                                        <div class="input-field">
+                                            <input type="text" class="datepicker" name="date2">
+                                        </div>
                                     </label>
                                 </p>
-								<label>Ilość osób:</label>
-                                <div class="input-field">                                    
-                                    <select>
-                                        <option value="" disabled selected>Wybierz ilość osób</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                    </select>
-
-                                </div>
-
-
-
-                                <input type="submit" value="Wyślij" class="btn">
+                                <p>
+                                    <label>
+                                        <span>Ilość osób</span>
+                                        <div class="input-field">
+                                            <input type="text" name="persons">
+                                        </div>
+                                    </label>
+                                </p>                        
+                                <input type="submit" value="Kup teraz" class="btn" >
+                            </form>    
                         </div>
                     </div>
                 </div>
@@ -218,11 +206,14 @@ while ($row=mysqli_fetch_array($filter_Result))
         //Datapicker
 
         const dp = document.querySelectorAll('.datepicker');
-        M.Datepicker.init(dp,{});
+        M.Datepicker.init(dp, {
+            showClearBtn: true,
+            format: "yyyy/mm/dd",
+        });
 
         //Selector
         const os = document.querySelectorAll('select');
-        M.FormSelect.init(os,{});
+        M.FormSelect.init(os, {});
         </script>
 
     </body>
