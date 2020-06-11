@@ -6,7 +6,7 @@ if(isset($_GET['pid']))
 	$pid=$_GET['pid'];	
 }
 
-$connect = mysqli_connect("localhost", "root", "", "travel_agency");
+require_once "connect.php";
 $query = "select * from `advertisment` where `id` = '$pid'";
 $filter_Result = mysqli_query($connect,$query);
 while ($row=mysqli_fetch_array($filter_Result))
@@ -18,18 +18,10 @@ while ($row=mysqli_fetch_array($filter_Result))
     $foodpriceforperson=$row['foodpriceforperson'];
     $startdate=$row['startdate'];
     $Finishdate=$row['finishdate'];
-
-	
-
 }
 
-  
-   
-
-
-	
-
 ?>
+
 <!DOCTYPE HTML>
 <html lang="pl">
 

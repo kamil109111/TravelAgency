@@ -8,7 +8,7 @@ if(isset($_POST['id']))
 }
 
 
-$connect = mysqli_connect("localhost", "root", "", "travel_agency");
+require_once "connect.php";
 $query = "select * from `advertisment` where `id` = '$id'";
 $filter_Result = mysqli_query($connect,$query);
 while ($row=mysqli_fetch_array($filter_Result))
@@ -86,7 +86,6 @@ $overall=$accprice+$foodprice;
                             <li>
                                 <a href="index.php">Strona domowa</a>
                             </li>
-
                         </ul>
                     </div>
                 </div>
@@ -119,31 +118,23 @@ $overall=$accprice+$foodprice;
                 <hr>
                 <h4>Łączna cena: <?php echo $overall ?> zł</h4>
                 <form action="success.php" method="post">
-                     <input type="hidden" name="id" VALUE="<?php echo $id ?>">
-                     <input type="hidden" name="date1" VALUE="<?php echo $date1 ?>">
-                     <input type="hidden" name="date2" VALUE="<?php echo $date2 ?>">
-                     <input type="hidden" name="persons" VALUE="<?php echo $persons ?>">
-                     <input type="hidden" name="food" VALUE="<?php echo $food ?>">
-                     <input type="hidden" name="overall" VALUE="<?php echo $overall ?>">              
-                 <div class="center">
-                    <input type="submit" class="waves-effect waves-light btn-large pulse" value="Potwierdź" />
-                 </div> 
-                </form> 
+                    <input type="hidden" name="id" VALUE="<?php echo $id ?>">
+                    <input type="hidden" name="date1" VALUE="<?php echo $date1 ?>">
+                    <input type="hidden" name="date2" VALUE="<?php echo $date2 ?>">
+                    <input type="hidden" name="persons" VALUE="<?php echo $persons ?>">
+                    <input type="hidden" name="food" VALUE="<?php echo $food ?>">
+                    <input type="hidden" name="overall" VALUE="<?php echo $overall ?>">
+                    <div class="center">
+                        <input type="submit" class="waves-effect waves-light btn-large pulse" value="Potwierdź" />
+                    </div>
+                </form>
 
                 <br><br>
-
-
-
-
-
 
                 <!-- Footer -->
                 <footer class="section teal darken-2 white-text center">
                     <p class="flow-text">Twoje Wczasy &copy; 2020 </p>
                 </footer>
-
-
-
 
                 <!--JavaScript at end of body for optimized loading-->
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

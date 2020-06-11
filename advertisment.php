@@ -16,7 +16,7 @@
 
 	function filterTable($query)
 	{
-		$connect = mysqli_connect("localhost", "root", "", "travel_agency");
+        require_once "connect.php";
 		$filter_Result = mysqli_query($connect, $query);
 		return $filter_Result;
 	}	
@@ -100,30 +100,32 @@
             <div class="row">
                 <!--Nagłówek sekcji-->
                 <h4 class="center"><span class="teal-text">Nasze</span> Oferty</h4>
-                
+
+                <!-- Oferty z bazy danych -->
+
                 <?php while($row = mysqli_fetch_array($search_result)):?>
-                
+
                 <div class="col s12 m4">
-                    <div class="card hoverable" style="height: 365px; max-width: 260px">
+                    <div class="card hoverable" style="max-width: 260px">
                         <div class="card-image">
                             <img src="images/<?php echo $row['picture'];?>" alt="">
                             <span class="card-title"><?php echo $row['name'];?></span>
                         </div>
-
                         <div class="card-content">
                             <div>
                                 <h5 class="left-align">
                                     <span class="teal-text">Cena / 1 os.:</span></h5>
                                 <h4><?php echo $row['priceforperson'];?> zł </h4>
-                                <!--<h5> echo $pid </h5> -->
-                                <a href='details.php?pid=<?php echo $row['id']?>'> <span
-                                        class="waves-effect waves-light btn">szczególy</span>
                             </div>
+                        </div>
+                        <div class="card-action">
+                            <a href='details.php?pid=<?php echo $row['id']?>'>
+                                <span class="waves-effect waves-light btn">szczególy</span>
+                            </a>
                         </div>
                     </div>
                 </div>
                 <?php endwhile;?>
-
             </div>
         </div>
     </section>
