@@ -1,47 +1,20 @@
 <?php
 
+$con = mysqli_connect('localhost','root','','travel_agency'); 
 
-if(isset($_POST['id']))
-{
-    $id=$_POST['id'];	
+$id=$_POST['id'];
+$date1=$_POST['date1'];
+$date2=$_POST['date2'];
+$persons=$_POST['persons'];
+$food=$_POST['food'];
+$overall=$_POST['overall'];
 
-}
+
+$sql = "INSERT INTO `orders`(`id`, `ad_id`, `first_date`, `second_date`, `persons`, `food`, `overall`, `status`) VALUES ('','$id','$date1','$date2','$persons','$food','$overall','')";
+$result = $con->query($sql); 
 
 
-$connect = mysqli_connect("localhost", "root", "", "travel_agency");
-$query = "select * from `advertisment` where `id` = '$id'";
-$filter_Result = mysqli_query($connect,$query);
-while ($row=mysqli_fetch_array($filter_Result))
-{
-	$name=$row['name'];
-	$description=$row['description'];
-	$priceforperson=$row['priceforperson'];
-	$picture=$row['picture'];
-    $foodpriceforperson=$row['foodpriceforperson'];
-    $startdate=$row['startdate'];
-    $finishdate=$row['finishdate'];
-    $date1=$_POST['date1'];
-    $date2=$_POST['date2'];
-    $persons=$_POST['persons'];	
 
-}
-
-$days = round((strtotime($date2)-strtotime($date1))/86400); 
-
-if(isset($_POST['food']))
-{
-    $foodprice=$persons*$foodpriceforperson*$days;
-}
-else
-{
-    $foodprice=0;
-}
-
-$accprice=$persons*$days*$priceforperson;
-
-$overall=$accprice+$foodprice;
-
-	
 
 ?>
 <!DOCTYPE HTML>
@@ -104,27 +77,21 @@ $overall=$accprice+$foodprice;
         <section id="summary">
             <div class="container">
                 <h2 class="center">
-                    <span class="teal-text">Podsumowanie</span>
+                    <span class="teal-text">Sukces!</span>
                     <hr>
                 </h2>
-                <h3><?php echo $name ?> </h3>
-                <h5>Od: <?php echo $date1 ?></h5>
-                <h5>Do: <?php echo $date2 ?></h5>
-                <h5>Ilość dni: <?php echo $days ?></h5>
-                <h5>Ilość osób: <?php echo $persons ?></h5>
-                <h5>Wyżywienie: <?php echo $foodprice ?> zł</h5>
-                <h5>Zakwaterowanie: <?php echo $accprice ?> zł</h5>
-                <hr>
-                <h4>Łączna cena: <?php echo $overall ?> zł</h4>
+                                
+                
+                
                 <div class="center">
-                    <a class="waves-effect waves-light btn-large pulse"><i class="material-icons left">check</i>potwierdź</a>
-                </div>    
                 <br><br>
-
-
-
-
-
+                <i class="teal-text darken-5 large material-icons">check</i>
+                <br><br>
+                <h5>Twoje zamówienie zostało dodane do bazy danych.</h5>
+                <br><br>
+                    <a class="waves-effect waves-light btn-large pulse"><i class="material-icons left">check</i>Zapłać</a>
+                </div>    
+                <br><br>           
 
                 <!-- Footer -->
                 <footer class="section teal darken-2 white-text center">

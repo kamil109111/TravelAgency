@@ -31,10 +31,12 @@ $days = round((strtotime($date2)-strtotime($date1))/86400);
 if(isset($_POST['food']))
 {
     $foodprice=$persons*$foodpriceforperson*$days;
+    $food=1;
 }
 else
 {
     $foodprice=0;
+    $food=0;
 }
 
 $accprice=$persons*$days*$priceforperson;
@@ -121,7 +123,7 @@ $overall=$accprice+$foodprice;
                      <input type="hidden" name="date1" VALUE="<?php echo $date1 ?>">
                      <input type="hidden" name="date2" VALUE="<?php echo $date2 ?>">
                      <input type="hidden" name="persons" VALUE="<?php echo $persons ?>">
-                     <input type="hidden" name="food" VALUE="<?php echo $_POST['food'] ?>">
+                     <input type="hidden" name="food" VALUE="<?php echo $food ?>">
                      <input type="hidden" name="overall" VALUE="<?php echo $overall ?>">              
                  <div class="center">
                     <input type="submit" class="waves-effect waves-light btn-large pulse" value="Potwierdź" />
