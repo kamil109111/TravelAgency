@@ -1,7 +1,8 @@
 <?php
 
 require_once "connect.php";
-
+$query = "SELECT * FROM advertisment";
+$result= mysqli_query($connect,$query);
 
 ?>
 
@@ -40,7 +41,7 @@ require_once "connect.php";
                         <!--Wyrównanie do prawej i chowaj jeśli zmniejszy się okno -->
                         <ul class="right hide-on-med-and-down">
                             <li>
-                                <a href="advertisment_admin.php">Powrót</a>
+                                <a href="orders_admin.php">Powrót</a>
                             </li>
                             <li>
                                 <a href="index.php">Strona domowa</a>
@@ -55,7 +56,7 @@ require_once "connect.php";
         <!--Hamburger menu, jeśli okno zostanie zmniejszone -->
         <ul class="sidenav" id="mobile-nav">
             <li>
-                <a href="advertisment_admin.php">Powrót</a>
+                <a href="orders_admin.php">Powrót</a>
             </li>
             <li>
                 <a href="index.php">Strona domowa</a>
@@ -65,34 +66,39 @@ require_once "connect.php";
 
         <div class="container">
             <div class="row">
-                <h4 class="center"><span class="teal-text">Dodaj</span> Ofertę</h4><br>
-                <form class="col s12" action="add_advert_success.php" method="post" >
+                <h4 class="center"><span class="teal-text">Dodaj</span> Zamówienie</h4><br>
+                <form class="col s12" action="summary_admin.php" method="post">
+
                     <div class="row">
-                        <div class="input-field col s12">
-                            <input placeholder="Nazwa" name="name" type="text" class="validate">
+                        <div class="select-field col s12">
+                            <select placeholder="Oferta" name="name">
+                                <?php while($row = mysqli_fetch_array($result)):?>
+                                <option><?php echo $row[1] ?></option>
+                                <?php endwhile; ?>
+                            </select>
                             <label for="name">Nazwa</label>
+                        </div>                        
+                        <div class="input-field col s12">
+                            <input name="first_date" type="text" class="datepicker">
+                            <label for="first_date">Od kiedy</label>
                         </div>
                         <div class="input-field col s12">
-                            <input name="description" type="text" class="validate">
-                            <label for="description">Opis</label>
+                            <input name="second_date" type="text" class="datepicker">
+                            <label for="second_date">Do kiedy</label>
                         </div>
-                        <div class="input-field col s12">
-                            <input name="priceforperson" type="text" class="validate">
-                            <label for="priceforperson">Cena / 1. osoba</label>
+                        <div>                           
+                                   <div class="input-field col s12">
+                                    <input type="text" name="persons">
+                                    <label for="persons">Ilość osób</label>
+                                </div>                            
                         </div>
-                        <div class="input-field col s12">
-                            <input name="foodpriceforperson" type="text" class="validate">
-                            <label for="foodpriceforperson">Wyżywienie / 1. osoba</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <input name="startdate" type="text" class="datepicker">
-                            <label for="startdate">Od kiedy dostępna</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <input name="finishdate" type="text" class="datepicker">
-                            <label for="finishdate">Do kiedy dostępna</label>
-                        </div>
-                    
+                        <div>
+                            <label>
+                                <input type="checkbox" name="food" class="filled-in" checked="checked" />
+                                <span>Wyżywienie</span>
+                            </label>
+                        </div>                    
+
                     </div>
                     <input type="submit" value="Dodaj" class="btn">
                 </form>

@@ -1,9 +1,26 @@
-<!DOCTYPE html>
+<?php
+
+require_once "connect.php";
+
+$id=$_POST['id'];
+$date1=$_POST['date1'];
+$date2=$_POST['date2'];
+$persons=$_POST['persons'];
+$food=$_POST['food'];
+$overall=$_POST['overall'];
+
+
+$sql = "INSERT INTO `orders`(`id`, `ad_id`, `first_date`, `second_date`, `persons`, `food`, `overall`, `status`) VALUES ('','$id','$date1','$date2','$persons','$food','$overall','')";
+$result = $connect->query($sql); 
+
+
+
+
+?>
+<!DOCTYPE HTML>
 <html lang="pl">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
@@ -17,13 +34,13 @@
     <title>Twoje wczasy</title>
 </head>
 
-<body id="admin" class="scrollspy">
+<body id="home" class="scrollspy">
     <!--Górne menu pasek sticky -->
     <div class="navbar-fixed">
         <nav class="teal">
             <div class="container">
                 <div class="nav-wrapper">
-                    <a href="#" class="brand-logo">Panel administratora</a>
+                    <a href="#" class="brand-logo">Twoje wczasy</a>
                     <a href="#" data-target="mobile-nav" class="sidenav-trigger">
                         <!--Jeśli zmniejszymy okno pojawi się hamburger menu -->
                         <i class="material-icons">menu</i>
@@ -32,14 +49,12 @@
                     <!--Wyrównanie do prawej i chowaj jeśli zmniejszy się okno -->
                     <ul class="right hide-on-med-and-down">
                         <li>
+                            <a href="orders_admin.php">Wróć do ofert</a>
+                        </li>
+                        <li>
                             <a href="index.php">Strona domowa</a>
                         </li>
-                        <li>
-                            <a href="advertisment_admin.php">Zarządzaj ofertami</a>
-                        </li>
-                        <li>
-                            <a href="orders_admin.php">Zarządzaj zamówieniami</a>
-                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -49,24 +64,36 @@
     <!--Hamburger menu, jeśli okno zostanie zmniejszone -->
     <ul class="sidenav" id="mobile-nav">
         <li>
+            <a href="orders_admin.php">Wróć do ofert</a>
+        </li>
+        <li>
             <a href="index.php">Strona domowa</a>
-        </li>
-        <li>
-            <a href="advertisment_admin.php">Zarządzaj ofertami</a>
-        </li>
-        <li>
-            <a href="orders_admin.php">Zarządzaj zamówieniami</a>
         </li>
     </ul>
 
+    <section id="success">
+        <div class="container">
+            <h2 class="center">
+                <span class="teal-text">Sukces!</span>
+                <hr>
+            </h2>
+
+            <div class="center">
+                <br><br>
+                <i class="teal-text darken-5 large material-icons">check</i>
+                <br><br>
+                <h5>Twoje zamówienie zostało dodane do bazy danych.</h5>
+                <br><br>
+                <a href="orders_admin.php" class="waves-effect waves-light btn-large"><i class="material-icons left">check</i>Wróć do listy ofert</a>
+            </div>
+            <br><br>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="section teal darken-2 white-text center">
         <p class="flow-text">Twoje Wczasy &copy; 2020 </p>
     </footer>
-
-
-
 
     <!--JavaScript at end of body for optimized loading-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -113,6 +140,17 @@
     // Po kliknięciu w menu na jakiś link, strona nie będzię przeskakiwać tylko przewijać do danej sekcji 
     const ss = document.querySelectorAll('.scrollspy');
     M.ScrollSpy.init(ss, {});
+
+    //Datapicker
+
+    const dp = document.querySelectorAll('.datepicker');
+    M.Datepicker.init(dp, {
+        showClearBtn: true,
+    });
+
+    //Selector
+    const os = document.querySelectorAll('select');
+    M.FormSelect.init(os, {});
     </script>
 
 </body>
