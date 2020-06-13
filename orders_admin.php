@@ -136,11 +136,11 @@
 
                             <td><?php echo $row['overall'];?></td>
                             <td><?php echo $row['status'];?></td>    
-                            <td><a href='edit_advert.php?pid=<?php echo $row['id']?>'>
+                            <td><a href='edit_order.php?pid=<?php echo $row['id']?>'>
                                     <span class="waves-effect blue darken-3 waves-light btn"><i class="material-icons">edit</i>edytuj</span>
                                 </a>
                             </td> 
-                            <td><a href='delete_advert_success.php?pid=<?php echo $row['id']?>'>
+                            <td><a href='delete_order_success.php?pid=<?php echo $row['id']?>'>
                                     <span class="waves-effect red darken-3 waves-light btn"><i class="material-icons">delete_forever</i>usuń</span>
                                 </a>
                             </td>    
