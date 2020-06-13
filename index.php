@@ -52,6 +52,9 @@
                         <li>
                             <a href="#contact">Kontakt</a>
                         </li>
+                        <li>
+                            <a href="register.php">Zarejestruj się</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -80,6 +83,9 @@
         </li>
         <li>
             <a href="#contact">Kontakt</a>
+        </li>
+        <li>
+            <a href="register.php">Zarejestruj się</a>
         </li>
     </ul>
 
