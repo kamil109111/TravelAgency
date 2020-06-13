@@ -122,6 +122,7 @@
                         <tr>
                             <th>Id</th>
                             <th>Nazwa</th>
+                            <th>Użytkownik</th>
                             <th>Od</th>
                             <th>Do</th>
                             <th>Ilość osób</th>
@@ -137,6 +138,9 @@
                             <td><?php echo $row['id'];?></td>
                             <td><a
                                     href='details_for_admin.php?pid=<?php echo $row['ad_id']?>'><?php echo $row['ad_id'];?></a>
+                            </td>
+                            <td><a
+                                    href='details_of_user.php?uid=<?php echo $row['user_id']?>'><?php echo $row['user_id'];?></a>
                             </td>
                             <td><?php echo $row['first_date'];?></td>
                             <td><?php echo $row['second_date'];?></td>
