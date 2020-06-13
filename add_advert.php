@@ -92,16 +92,7 @@ require_once "connect.php";
                             <input name="finishdate" type="text" class="datepicker">
                             <label for="finishdate">Do kiedy dostępna</label>
                         </div>
-                        <div class="file-field input-field">
-                            <div class="btn">
-                                <span>Plik</span>
-                                <input type="file">
-                            </div>
-                            <div class="file-path-wrapper">
-                                <input class="file-path validate" name="picture" type="text">
-                                <label for="picture">Zdjęcie</label>
-                            </div>
-                        </div>
+                    
                     </div>
                     <input type="submit" value="Dodaj" class="btn">
                 </form>

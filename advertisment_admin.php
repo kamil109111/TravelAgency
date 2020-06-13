@@ -117,6 +117,8 @@
                             <th>Nazwa</th>
                             <th>Cena/1.osoba</th>
                             <th>Wyżywienie/1.osoba</th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
 
@@ -127,6 +129,14 @@
                             <td><?php echo $row['name'];?></td>
                             <td><?php echo $row['priceforperson'];?></td>
                             <td><?php echo $row['foodpriceforperson'];?></td>
+                            <td><a href='details.php?pid=<?php echo $row['id']?>'>
+                                    <span class="waves-effect blue darken-3 waves-light btn"><i class="material-icons">edit</i>edytuj</span>
+                                </a>
+                            </td> 
+                            <td><a href='delete_advert_success.php?pid=<?php echo $row['id']?>'>
+                                    <span class="waves-effect red darken-3 waves-light btn"><i class="material-icons">delete_forever</i>usuń</span>
+                                </a>
+                            </td>    
                         </tr>
                     </tbody>
                     <?php endwhile;?>
