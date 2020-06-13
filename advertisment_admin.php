@@ -129,7 +129,7 @@
                             <td><?php echo $row['name'];?></td>
                             <td><?php echo $row['priceforperson'];?></td>
                             <td><?php echo $row['foodpriceforperson'];?></td>
-                            <td><a href='details.php?pid=<?php echo $row['id']?>'>
+                            <td><a href='edit_advert.php?pid=<?php echo $row['id']?>'>
                                     <span class="waves-effect blue darken-3 waves-light btn"><i class="material-icons">edit</i>edytuj</span>
                                 </a>
                             </td> 
