@@ -84,7 +84,7 @@ $result = $connect->query($sql);
                 <br><br>
                 <h5>Twoje zamówienie zostało dodane do bazy danych.</h5>
                 <br><br>
-                <a class="waves-effect waves-light btn-large pulse"><i class="material-icons left">check</i>Zapłać</a>
+                <a class="waves-effect waves-light btn-large"><i class="material-icons left">check</i>Zapłać</a>
             </div>
             <br><br>
         </div>

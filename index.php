@@ -37,7 +37,7 @@
                     <!--Elementy menu -->
                     <!--Wyrównanie do prawej i chowaj jeśli zmniejszy się okno -->
                     <ul class="right hide-on-med-and-down">
-                    <?php
+                        <?php
                     if(isset($_SESSION['zalogowany'])&&($_SESSION['zalogowany']==true))     
                               {
                                   if(isset($_SESSION['typeofuser'])&&($_SESSION['typeofuser']=='admin'))
@@ -49,7 +49,7 @@
                                   }
                               }
                              
-                             ?>                        
+                             ?>
                         <li>
                             <a href="#home">Strona domowa</a>
                         </li>
@@ -67,7 +67,7 @@
                         </li>
                         <li>
                             <a href="#contact">Kontakt</a>
-                        </li>                        
+                        </li>
                         <?php
 
                              if(isset($_SESSION['zalogowany'])&&($_SESSION['zalogowany']==true))     
@@ -93,9 +93,19 @@
 
     <!--Hamburger menu, jeśli okno zostanie zmniejszone -->
     <ul class="sidenav" id="mobile-nav">
-        <li>
-            <a href="admin.php">Panel administratora</a>
-        </li>
+        <?php
+                    if(isset($_SESSION['zalogowany'])&&($_SESSION['zalogowany']==true))     
+                              {
+                                  if(isset($_SESSION['typeofuser'])&&($_SESSION['typeofuser']=='admin'))
+                                  {
+                                       echo
+                                        '<li>
+                                            <a href="admin.php">Panel administratora</a>
+                                         </li>';
+                                  }
+                              }
+                             
+        ?>
         <li>
             <a href="#home">Strona domowa</a>
         </li>
@@ -113,7 +123,7 @@
         </li>
         <li>
             <a href="#contact">Kontakt</a>
-        </li>        
+        </li>
         <?php
 
             if(isset($_SESSION['zalogowany'])&&($_SESSION['zalogowany']==true))     
@@ -132,7 +142,7 @@
             }
 		?>
     </ul>
-    
+
     <!-- Section: Slider -->
     <!-- 3 obrazki wyświetlane na zmianę -->
     <section class="slider">

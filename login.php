@@ -45,26 +45,9 @@
                     <!--Elementy menu -->
                     <!--Wyrównanie do prawej i chowaj jeśli zmniejszy się okno -->
                     <ul class="right hide-on-med-and-down">
+                        
                         <li>
-                            <a href="admin.php">Panel administratora</a>
-                        </li>
-                        <li>
-                            <a href="#home">Strona domowa</a>
-                        </li>
-                        <li>
-                            <a href="#search">Wyszukaj</a>
-                        </li>
-                        <li>
-                            <a href="advertisment.php">Oferty</a>
-                        </li>
-                        <li>
-                            <a href="#popular">Popularne miejsca</a>
-                        </li>
-                        <li>
-                            <a href="#gallery">Galeria</a>
-                        </li>
-                        <li>
-                            <a href="#contact">Kontakt</a>
+                            <a href="index.php">Strona domowa</a>
                         </li>
                         <li>
                             <a href="register.php">Zarejestruj się</a>
@@ -78,26 +61,8 @@
     <!--Hamburger menu, jeśli okno zostanie zmniejszone -->
     <ul class="sidenav" id="mobile-nav">
         <li>
-            <a href="admin.php">Panel administratora</a>
-        </li>
-        <li>
-            <a href="#home">Strona domowa</a>
-        </li>
-        <li>
-            <a href="#search">Wyszukaj</a>
-        </li>
-        <li>
-            <a href="advertisment.php">Oferty</a>
-        </li>
-        <li>
-            <a href="#popular">Popularne miejsca</a>
-        </li>
-        <li>
-            <a href="#gallery">Galeria</a>
-        </li>
-        <li>
-            <a href="#contact">Kontakt</a>
-        </li>
+            <a href="index.php">Strona domowa</a>
+        </li>     
         <li>
             <a href="register.php">Zarejestruj się</a>
         </li>

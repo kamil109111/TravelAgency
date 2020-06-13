@@ -59,6 +59,9 @@
                             <a href="index.php">Strona domowa</a>
                         </li>
                         <li>
+                            <a href="admin.php">Panel administratora</a>
+                        </li>
+                        <li>
                             <a href="#search">Wyszukaj</a>
                         </li>
                     </ul>
@@ -71,6 +74,9 @@
     <ul class="sidenav" id="mobile-nav">
         <li>
             <a href="index.php">Strona domowa</a>
+        </li>
+        <li>
+            <a href="admin.php">Panel administratora</a>
         </li>
         <li>
             <a href="#search">Wyszukaj</a>
@@ -104,7 +110,8 @@
 
                 <br><br>
 
-                <a href="add_order.php" class="waves-effect waves-light btn-large"><i class="material-icons right">add</i>Dodaj ofertę</a>
+                <a href="add_order.php" class="waves-effect waves-light btn-large"><i
+                        class="material-icons right">add</i>Dodaj ofertę</a>
 
                 <br><br>
 
@@ -128,22 +135,26 @@
                     <tbody>
                         <tr>
                             <td><?php echo $row['id'];?></td>
-                            <td><a href='details_for_admin.php?pid=<?php echo $row['ad_id']?>'><?php echo $row['ad_id'];?></a></td>
+                            <td><a
+                                    href='details_for_admin.php?pid=<?php echo $row['ad_id']?>'><?php echo $row['ad_id'];?></a>
+                            </td>
                             <td><?php echo $row['first_date'];?></td>
                             <td><?php echo $row['second_date'];?></td>
                             <td><?php echo $row['persons'];?></td>
                             <td><?php if ($row['food'] == 1){echo "TAK";}else{echo "NIE";};?></td>
 
                             <td><?php echo $row['overall'];?></td>
-                            <td><?php echo $row['status'];?></td>    
+                            <td><?php echo $row['status'];?></td>
                             <td><a href='edit_order.php?pid=<?php echo $row['id']?>'>
-                                    <span class="waves-effect blue darken-3 waves-light btn"><i class="material-icons">edit</i>edytuj</span>
+                                    <span class="waves-effect blue darken-3 waves-light btn"><i
+                                            class="material-icons">edit</i>edytuj</span>
                                 </a>
-                            </td> 
+                            </td>
                             <td><a href='delete_order_success.php?pid=<?php echo $row['id']?>'>
-                                    <span class="waves-effect red darken-3 waves-light btn"><i class="material-icons">delete_forever</i>usuń</span>
+                                    <span class="waves-effect red darken-3 waves-light btn"><i
+                                            class="material-icons">delete_forever</i>usuń</span>
                                 </a>
-                            </td>    
+                            </td>
                         </tr>
                     </tbody>
                     <?php endwhile;?>

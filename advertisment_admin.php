@@ -59,6 +59,9 @@
                             <a href="index.php">Strona domowa</a>
                         </li>
                         <li>
+                            <a href="admin.php">Panel administratora</a>
+                        </li>
+                        <li>
                             <a href="#search">Wyszukaj</a>
                         </li>
                     </ul>
@@ -71,6 +74,9 @@
     <ul class="sidenav" id="mobile-nav">
         <li>
             <a href="index.php">Strona domowa</a>
+        </li>
+        <li>
+            <a href="admin.php">Panel administratora</a>
         </li>
         <li>
             <a href="#search">Wyszukaj</a>
@@ -104,7 +110,8 @@
 
                 <br><br>
 
-                <a href="add_advert.php" class="waves-effect waves-light btn-large"><i class="material-icons right">add</i>Dodaj ofertę</a>
+                <a href="add_advert.php" class="waves-effect waves-light btn-large"><i
+                        class="material-icons right">add</i>Dodaj ofertę</a>
 
                 <br><br>
 
@@ -130,13 +137,15 @@
                             <td><?php echo $row['priceforperson'];?></td>
                             <td><?php echo $row['foodpriceforperson'];?></td>
                             <td><a href='edit_advert.php?pid=<?php echo $row['id']?>'>
-                                    <span class="waves-effect blue darken-3 waves-light btn"><i class="material-icons">edit</i>edytuj</span>
+                                    <span class="waves-effect blue darken-3 waves-light btn"><i
+                                            class="material-icons">edit</i>edytuj</span>
                                 </a>
-                            </td> 
+                            </td>
                             <td><a href='delete_advert_success.php?pid=<?php echo $row['id']?>'>
-                                    <span class="waves-effect red darken-3 waves-light btn"><i class="material-icons">delete_forever</i>usuń</span>
+                                    <span class="waves-effect red darken-3 waves-light btn"><i
+                                            class="material-icons">delete_forever</i>usuń</span>
                                 </a>
-                            </td>    
+                            </td>
                         </tr>
                     </tbody>
                     <?php endwhile;?>

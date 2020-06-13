@@ -30,10 +30,10 @@
                     <!--Wyrównanie do prawej i chowaj jeśli zmniejszy się okno -->
                     <ul class="right hide-on-med-and-down">
                         <li>
-                            <a href="advertisment.php">Wróć do ofert</a>
+                            <a href="index.php">Strona domowa</a>
                         </li>
                         <li>
-                            <a href="index.php">Strona domowa</a>
+                            <a href="login.php">Zaloguj się</a>
                         </li>
 
                     </ul>
@@ -45,10 +45,10 @@
     <!--Hamburger menu, jeśli okno zostanie zmniejszone -->
     <ul class="sidenav" id="mobile-nav">
         <li>
-            <a href="advertisment.php">Wróć do ofert</a>
+            <a href="index.php">Strona domowa</a>
         </li>
         <li>
-            <a href="index.php">Strona domowa</a>
+            <a href="login.php">Zaloguj się</a>
         </li>
     </ul>
 
@@ -65,7 +65,8 @@
                 <br><br>
                 <h5>Twoje konto zostało pomyślnie utworzone .</h5>
                 <br><br>
-                <a href="login.php" class="waves-effect waves-light btn-large"><i class="material-icons left">check</i>Zaloguj się</a>
+                <a href="login.php" class="waves-effect waves-light btn-large"><i
+                        class="material-icons left">check</i>Zaloguj się</a>
             </div>
             <br><br>
         </div>

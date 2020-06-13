@@ -50,7 +50,7 @@ $result = $connect->query($sql);
                     <!--Wyrównanie do prawej i chowaj jeśli zmniejszy się okno -->
                     <ul class="right hide-on-med-and-down">
                         <li>
-                            <a href="advertisment.php">Wróć do ofert</a>
+                            <a href="advertisment_admin.php">Powrót</a>
                         </li>
                         <li>
                             <a href="index.php">Strona domowa</a>
@@ -65,7 +65,7 @@ $result = $connect->query($sql);
     <!--Hamburger menu, jeśli okno zostanie zmniejszone -->
     <ul class="sidenav" id="mobile-nav">
         <li>
-            <a href="advertisment.php">Wróć do ofert</a>
+            <a href="advertisment_admin.php">Powrót</a>
         </li>
         <li>
             <a href="index.php">Strona domowa</a>
