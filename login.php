@@ -1,7 +1,23 @@
-<!DOCTYPE HTML>
+<?php
+
+ session_start();
+ 
+ /*Sprawdza czy użytkownik jest zalogowany*/
+ 
+ if(isset($_SESSION['zalogowany'])&&($_SESSION['zalogowany']==true))
+ {
+	 header('Location:index.php');
+	 /*Żeby od razu przejść do gra.php i nie przetwarzać dalej index.php*/
+	 exit();
+ } 
+?>
+
+<!DOCTYPE html>
 <html lang="pl">
 
 <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
@@ -30,12 +46,29 @@
                     <!--Wyrównanie do prawej i chowaj jeśli zmniejszy się okno -->
                     <ul class="right hide-on-med-and-down">
                         <li>
-                            <a href="advertisment.php">Wróć do ofert</a>
+                            <a href="admin.php">Panel administratora</a>
                         </li>
                         <li>
-                            <a href="index.php">Strona domowa</a>
+                            <a href="#home">Strona domowa</a>
                         </li>
-
+                        <li>
+                            <a href="#search">Wyszukaj</a>
+                        </li>
+                        <li>
+                            <a href="advertisment.php">Oferty</a>
+                        </li>
+                        <li>
+                            <a href="#popular">Popularne miejsca</a>
+                        </li>
+                        <li>
+                            <a href="#gallery">Galeria</a>
+                        </li>
+                        <li>
+                            <a href="#contact">Kontakt</a>
+                        </li>
+                        <li>
+                            <a href="register.php">Zarejestruj się</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -45,36 +78,68 @@
     <!--Hamburger menu, jeśli okno zostanie zmniejszone -->
     <ul class="sidenav" id="mobile-nav">
         <li>
-            <a href="advertisment.php">Wróć do ofert</a>
+            <a href="admin.php">Panel administratora</a>
         </li>
         <li>
-            <a href="index.php">Strona domowa</a>
+            <a href="#home">Strona domowa</a>
+        </li>
+        <li>
+            <a href="#search">Wyszukaj</a>
+        </li>
+        <li>
+            <a href="advertisment.php">Oferty</a>
+        </li>
+        <li>
+            <a href="#popular">Popularne miejsca</a>
+        </li>
+        <li>
+            <a href="#gallery">Galeria</a>
+        </li>
+        <li>
+            <a href="#contact">Kontakt</a>
+        </li>
+        <li>
+            <a href="register.php">Zarejestruj się</a>
         </li>
     </ul>
 
-    <section id="success">
-        <div class="container">
-            <h2 class="center">
-                <span class="teal-text">Witaj!</span>
-                <hr>
-            </h2>
+    <div>
+        <h4 class="center"><span class="teal-text">Zaloguj się</span></h4>
 
-            <div class="center">
-                <br><br>
-                <i class="teal-text darken-5 large material-icons">check</i>
-                <br><br>
-                <h5>Twoje konto zostało pomyślnie utworzone .</h5>
-                <br><br>
-                <a href="login.php" class="waves-effect waves-light btn-large"><i class="material-icons left">check</i>Zaloguj się</a>
+        <div class="center">
+            <div class="container">
+                <div class="col s4">
+                    <br><br>
+                    Jeśli nie masz jeszcze konta - <a href="register.php">Zarejestruj się!</a>
+                    <br><br>
+
+                    <form action="login_connect.php" method="post">
+
+                        Login: <br /> <input type="text" name="login" /><br />
+                        Hasło: <br /> <input type="password" name="haslo" /><br /><br />
+                        <input type="submit" value="Zaloguj się" class="btn" />
+                    </form>
+                </div>
             </div>
-            <br><br>
         </div>
-    </section>
+    </div>
+    <br><br>
+
+
+    <?php
+
+if(isset($_SESSION['blad']))
+    echo $_SESSION['blad'];
+
+?>
 
     <!-- Footer -->
     <footer class="section teal darken-2 white-text center">
         <p class="flow-text">Twoje Wczasy &copy; 2020 </p>
     </footer>
+
+
+
 
     <!--JavaScript at end of body for optimized loading-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -121,17 +186,6 @@
     // Po kliknięciu w menu na jakiś link, strona nie będzię przeskakiwać tylko przewijać do danej sekcji 
     const ss = document.querySelectorAll('.scrollspy');
     M.ScrollSpy.init(ss, {});
-
-    //Datapicker
-
-    const dp = document.querySelectorAll('.datepicker');
-    M.Datepicker.init(dp, {
-        showClearBtn: true,
-    });
-
-    //Selector
-    const os = document.querySelectorAll('select');
-    M.FormSelect.init(os, {});
     </script>
 
 </body>

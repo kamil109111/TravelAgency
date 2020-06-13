@@ -1,3 +1,9 @@
+<?php
+
+ session_start();
+  
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -31,9 +37,19 @@
                     <!--Elementy menu -->
                     <!--Wyrównanie do prawej i chowaj jeśli zmniejszy się okno -->
                     <ul class="right hide-on-med-and-down">
-                        <li>
-                            <a href="admin.php">Panel administratora</a>
-                        </li>
+                    <?php
+                    if(isset($_SESSION['zalogowany'])&&($_SESSION['zalogowany']==true))     
+                              {
+                                  if(isset($_SESSION['typeofuser'])&&($_SESSION['typeofuser']=='admin'))
+                                  {
+                                       echo
+                                        '<li>
+                                            <a href="admin.php">Panel administratora</a>
+                                         </li>';
+                                  }
+                              }
+                             
+                             ?>                        
                         <li>
                             <a href="#home">Strona domowa</a>
                         </li>
@@ -51,10 +67,24 @@
                         </li>
                         <li>
                             <a href="#contact">Kontakt</a>
-                        </li>
-                        <li>
-                            <a href="register.php">Zarejestruj się</a>
-                        </li>
+                        </li>                        
+                        <?php
+
+                             if(isset($_SESSION['zalogowany'])&&($_SESSION['zalogowany']==true))     
+                              {
+                                  echo
+                                  '<li>
+                                      <a href="logout.php">Wyloguj się</a>
+                                 </li>';
+                              }
+                             else
+                             {
+                                 echo
+                                '<li>
+                                      <a href="login.php">Zaloguj się</a>
+                                 </li>';
+                             }
+		                ?>
                     </ul>
                 </div>
             </div>
@@ -83,12 +113,26 @@
         </li>
         <li>
             <a href="#contact">Kontakt</a>
-        </li>
-        <li>
-            <a href="register.php">Zarejestruj się</a>
-        </li>
-    </ul>
+        </li>        
+        <?php
 
+            if(isset($_SESSION['zalogowany'])&&($_SESSION['zalogowany']==true))     
+            {
+            echo
+             '<li>
+                <a href="logout.php">Wyloguj się</a>
+             </li>';
+            }
+            else
+            {
+            echo
+             '<li>
+                <a href="login.php">Zaloguj się</a>
+             </li>';
+            }
+		?>
+    </ul>
+    
     <!-- Section: Slider -->
     <!-- 3 obrazki wyświetlane na zmianę -->
     <section class="slider">
