@@ -32,8 +32,17 @@ $priceforperson=$_POST['priceforperson'];
 $foodpriceforperson=$_POST['foodpriceforperson'];
 $startdate=$_POST['startdate'];
 $finishdate=$_POST['finishdate'];
-$picture=$_POST['picture'];
 
+
+$uploaddir = 'images/'; // katalog gdzie ma zostać zapisany plik
+if(move_uploaded_file($_FILES['picture']['tmp_name'], $uploaddir.$_FILES['picture']['name'])){
+    echo("Plik zosał załadowany.");
+}
+else{
+    echo("Plik nie został załadowany.");
+}
+
+$picture=$_FILES['picture']['name'];
 
 $sql = "INSERT INTO `advertisment`(`id`, `name`, `description`, `priceforperson`, `picture`, `foodpriceforperson`, `startdate`, `finishdate`) VALUES ('','$name','$description','$priceforperson','$picture','$foodpriceforperson','$startdate','$finishdate')";
 $result = $connect->query($sql); 

@@ -90,7 +90,7 @@ require_once "connect.php";
         <div class="container">
             <div class="row">
                 <h4 class="center"><span class="teal-text">Dodaj</span> Ofertę</h4><br>
-                <form class="col s12" action="add_advert_success.php" method="post" >
+                <form class="col s12" action="add_advert_success.php" method="post" ENCTYPE="multipart/form-data">
                     <div class="row">
                         <div class="input-field col s12">
                             <input placeholder="Nazwa" name="name" type="text" class="validate">
@@ -117,10 +117,18 @@ require_once "connect.php";
                             <label for="finishdate">Do kiedy dostępna</label>
                         </div>
                         <div class="input-field col s12">
-                            <input name="picture" type="file" class="validate">
-                            <label for="picture">Grafika</label>
+                            <div class="file-field input-field">
+                                <div class="btn">
+                                    <span>Plik</span>
+                                    <input type="file" name="picture">
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text">
+                                    <label for="picture">Grafika</label>
+                                </div>
+                            </div>              
                         </div>
-                    
+
                     </div>
                     <input type="submit" value="Dodaj" class="btn">
                 </form>
