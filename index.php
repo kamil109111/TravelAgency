@@ -69,6 +69,19 @@
                             <a href="#contact">Kontakt</a>
                         </li>
                         <?php
+                    if(isset($_SESSION['zalogowany'])&&($_SESSION['zalogowany']==true))     
+                              {
+                                  if(isset($_SESSION['typeofuser'])&&($_SESSION['typeofuser']!='admin'))
+                                  {
+                                       echo
+                                        '<li>
+                                        <a href="orders_user.php">Moje wycieczki</a>
+                                         </li>';
+                                  }
+                              }
+                             
+                             ?>
+                        <?php
 
                              if(isset($_SESSION['zalogowany'])&&($_SESSION['zalogowany']==true))     
                               {
@@ -99,9 +112,12 @@
                                   if(isset($_SESSION['typeofuser'])&&($_SESSION['typeofuser']=='admin'))
                                   {
                                        echo
-                                        '<li>
-                                            <a href="admin.php">Panel administratora</a>
-                                         </li>';
+                                         '<li>
+                                        <a href="orders_user.php">Moje wycieczki</a>
+                                          </li>
+                                        <li>
+                                            <a href="logout.php">Wyloguj się</a>
+                                       </li>';
                                   }
                               }
                              
@@ -124,6 +140,19 @@
         <li>
             <a href="#contact">Kontakt</a>
         </li>
+        <?php
+                    if(isset($_SESSION['zalogowany'])&&($_SESSION['zalogowany']==true))     
+                              {
+                                  if(isset($_SESSION['typeofuser'])&&($_SESSION['typeofuser']!='admin'))
+                                  {
+                                       echo
+                                        '<li>
+                                        <a href="orders_user.php">Moje wycieczki</a>
+                                         </li>';
+                                  }
+                              }
+                             
+                             ?>
         <?php
 
             if(isset($_SESSION['zalogowany'])&&($_SESSION['zalogowany']==true))     

@@ -1,31 +1,33 @@
 <?php
 
-require_once "connect.php";
-
-
 
  session_start();
 
- if(isset($_SESSION['zalogowany'])&&($_SESSION['zalogowany']==true))     
+ if(!isset($_SESSION['zalogowany'])&&($_SESSION['zalogowany']!=true))     
  {
-     if(isset($_SESSION['typeofuser'])&&($_SESSION['typeofuser']=='admin'))
-     {
-        
-     }
-     else
-     {
-        header('Location: index.php');
-		exit();
-     }
+    header('Location: login.php');
+    exit();
+   
  }
- else
-     {
-        header('Location: login.php');
-		exit();
-     }
-  
 
+if(isset($_GET['pid']))
+{
+	$pid=$_GET['pid'];	
+}
 
+require_once "connect.php";
+$query = "select * from `advertisment` where `id` = '$pid'";
+$filter_Result = mysqli_query($connect,$query);
+while ($row=mysqli_fetch_array($filter_Result))
+{
+	$name=$row['name'];
+	$description=$row['description'];
+	$priceforperson=$row['priceforperson'];
+	$picture=$row['picture'];
+    $foodpriceforperson=$row['foodpriceforperson'];
+    $startdate=$row['startdate'];
+    $Finishdate=$row['finishdate'];
+}
 
 ?>
 
@@ -64,7 +66,7 @@ require_once "connect.php";
                         <!--Wyrównanie do prawej i chowaj jeśli zmniejszy się okno -->
                         <ul class="right hide-on-med-and-down">
                             <li>
-                                <a href="advertisment_admin.php">Powrót</a>
+                                <a href="orders_user.php">Wróć do listy zamówień</a>
                             </li>
                             <li>
                                 <a href="index.php">Strona domowa</a>
@@ -79,53 +81,34 @@ require_once "connect.php";
         <!--Hamburger menu, jeśli okno zostanie zmniejszone -->
         <ul class="sidenav" id="mobile-nav">
             <li>
-                <a href="advertisment_admin.php">Powrót</a>
+                <a href="orders_user.php">Wróć do listy zamówień</a>
             </li>
             <li>
                 <a href="index.php">Strona domowa</a>
             </li>
         </ul>
-        <br>
 
-        <div class="container">
-            <div class="row">
-                <h4 class="center"><span class="teal-text">Dodaj</span> Ofertę</h4><br>
-                <form class="col s12" action="add_advert_success.php" method="post" >
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input placeholder="Nazwa" name="name" type="text" class="validate">
-                            <label for="name">Nazwa</label>
+        <!-- Section: Detail -->
+        <section id="details" class="section section-contact scrollspy">
+            <div class="container">
+                <div class="row">
+                    <h4 class="center"><span class="teal-text">Szczegóły</span> Oferty</h4>
+                    <div class="col s12 m12">
+                        <div class="card-image">
+                            <img src="images/<?php echo $picture ?>" alt="" class="materialboxed responsive-img">
                         </div>
-                        <div class="input-field col s12">
-                            <input name="description" type="text" class="validate">
-                            <label for="description">Opis</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <input name="priceforperson" type="text" class="validate">
-                            <label for="priceforperson">Cena / 1. osoba</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <input name="foodpriceforperson" type="text" class="validate">
-                            <label for="foodpriceforperson">Wyżywienie / 1. osoba</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <input name="startdate" type="text" class="datepicker">
-                            <label for="startdate">Od kiedy dostępna</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <input name="finishdate" type="text" class="datepicker">
-                            <label for="finishdate">Do kiedy dostępna</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <input name="picture" type="file" class="validate">
-                            <label for="picture">Grafika</label>
-                        </div>
-                    
-                    </div>
-                    <input type="submit" value="Dodaj" class="btn">
-                </form>
+                        <ul class="collection white-header">
+                            <li class="collection-item">
+                                <h4><?php echo $name ?> </h4>
+                            </li>
+                            <li class="collection-item"><?php echo $description ?></li>
+                            <li class="collection-item">Cena / 1 os. : <?php echo $priceforperson ?> zł </li>
+                            <li class="collection-item">Wyżywienie / 1 os. : <?php echo $foodpriceforperson ?> zł</li>
+                        </ul>
+                    </div>                    
+                </div>
             </div>
-        </div>
+        </section>
 
 
         <!-- Footer -->
