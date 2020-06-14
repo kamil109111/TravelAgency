@@ -1,3 +1,27 @@
+<?php
+
+ session_start();
+
+ if(isset($_SESSION['zalogowany'])&&($_SESSION['zalogowany']==true))     
+ {
+     if(isset($_SESSION['typeofuser'])&&($_SESSION['typeofuser']=='admin'))
+     {
+        
+     }
+     else
+     {
+        header('Location: index.php');
+		exit();
+     }
+ }
+ else
+     {
+        header('Location: login.php');
+		exit();
+     }
+  
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -64,6 +88,24 @@
             <a href="users_admin.php">Zarządzaj użytkownikami</a>
         </li>
     </ul>
+
+
+    <div class="container">
+        <div class="center">
+            <div class="row">
+                <br><br>
+                <a href="advertisment_admin.php" class="waves-effect waves-light btn-large"><i
+                        class="material-icons left">local_offer</i>Zarządzaj ofertami</a>
+                <br><br>
+                <a href="orders_admin.php" class="waves-effect waves-light btn-large"><i
+                        class="material-icons left">event</i>Zarządzaj zamówieniami</a>
+                <br><br>
+                <a href="users_admin.php" class="waves-effect waves-light btn-large"><i
+                        class="material-icons left">group</i>Zarządzaj użytkownikami</a>
+                <br><br>
+            </div>
+        </div>
+    </div>
 
 
     <!-- Footer -->

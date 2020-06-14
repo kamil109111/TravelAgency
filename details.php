@@ -2,6 +2,13 @@
 
 session_start();
 
+if(!isset($_SESSION['zalogowany'])&&($_SESSION['zalogowany']!=true))     
+{
+   header('Location: login.php');
+   exit();
+  
+}
+
 if(isset($_GET['pid']))
 {
 	$pid=$_GET['pid'];	

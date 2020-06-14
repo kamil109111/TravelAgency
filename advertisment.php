@@ -1,5 +1,15 @@
 <?php 
 
+ session_start();
+
+ if(!isset($_SESSION['zalogowany'])&&($_SESSION['zalogowany']!=true))     
+ {
+    header('Location: login.php');
+    exit();
+   
+ }
+ 
+
 	if (isset($_POST['search']))
 	{
 		$valueToSearch = $_POST['valueToSearch'];

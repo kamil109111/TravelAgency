@@ -1,6 +1,13 @@
 <?php
 
  session_start();
+
+ if(isset($_SESSION['zalogowany'])&&($_SESSION['zalogowany']==true))     
+ {
+    header('Location: index.php');
+    exit();
+   
+ }
  
  /*Sprawdzamy czy przycisk zarejestruj sie został kliknięty*/
  /*poprzez sprawdzenie czy zmienna w emaili w POST została ustawiona*/

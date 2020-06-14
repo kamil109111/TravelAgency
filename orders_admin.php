@@ -1,4 +1,25 @@
-<?php 
+<?php
+
+ session_start();
+
+ if(isset($_SESSION['zalogowany'])&&($_SESSION['zalogowany']==true))     
+ {
+     if(isset($_SESSION['typeofuser'])&&($_SESSION['typeofuser']=='admin'))
+     {
+        
+     }
+     else
+     {
+        header('Location: index.php');
+		exit();
+     }
+ }
+ else
+     {
+        header('Location: login.php');
+		exit();
+     }
+  
 
 	if (isset($_POST['search']))
 	{
