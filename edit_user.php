@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 
 if(isset($_GET['pid']))
 {
@@ -8,17 +7,16 @@ if(isset($_GET['pid']))
 }
 
 require_once "connect.php";
-$query = "select * from `advertisment` where `id` = '$pid'";
+$query = "select * from `users` where `id` = '$pid'";
 $filter_Result = mysqli_query($connect,$query);
 while ($row=mysqli_fetch_array($filter_Result))
 {
-	$name=$row['name'];
-	$description=$row['description'];
-	$priceforperson=$row['priceforperson'];
-	$picture=$row['picture'];
-    $foodpriceforperson=$row['foodpriceforperson'];
-    $startdate=$row['startdate'];
-    $Finishdate=$row['finishdate'];
+	$first_name=$row['first_name'];
+	$last_name=$row['last_name'];
+	$phone=$row['phone'];
+	$login=$row['login'];
+    $email=$row['email'];
+ 
 }
 
 ?>
@@ -58,7 +56,7 @@ while ($row=mysqli_fetch_array($filter_Result))
                         <!--Wyrównanie do prawej i chowaj jeśli zmniejszy się okno -->
                         <ul class="right hide-on-med-and-down">
                             <li>
-                                <a href="advertisment.php">Wróć do ofert</a>
+                                <a href="users_admin.php">Powrót</a>
                             </li>
                             <li>
                                 <a href="index.php">Strona domowa</a>
@@ -73,74 +71,49 @@ while ($row=mysqli_fetch_array($filter_Result))
         <!--Hamburger menu, jeśli okno zostanie zmniejszone -->
         <ul class="sidenav" id="mobile-nav">
             <li>
-                <a href="advertisment.php">Wróć do ofert</a>
+                <a href="users_admin.php">Powrót</a>
             </li>
             <li>
                 <a href="index.php">Strona domowa</a>
             </li>
         </ul>
+        <br>
 
-        <!-- Section: Detail -->
-        <section id="details" class="section section-contact scrollspy">
-            <div class="container">
-                <div class="row">
-                    <h4 class="center"><span class="teal-text">Szczegóły</span> Oferty</h4>
-                    <div class="col s12 m6">
-                        <div class="card-image">
-                            <img src="images/<?php echo $picture ?>" alt="" class="materialboxed responsive-img">
+        <div class="container">
+            <div class="row">
+                <h4 class="center"><span class="teal-text">Edytuj</span> Ofertę</h4><br>
+                <form class="col s12" action="edit_user_success.php" method="post">
+                    <input type="hidden" name="id" VALUE="<?php echo $pid ?>">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="Nazwa" name="login" type="text" class="validate"
+                                value="<?php echo $login ?>">
+                            <label for="name">Login</label>
                         </div>
-                        <ul class="collection white-header">
-                            <li class="collection-item">
-                                <h4><?php echo $name ?> </h4>
-                            </li>
-                            <li class="collection-item"><?php echo $description ?></li>
-                            <li class="collection-item">Cena / 1 os. : <?php echo $priceforperson ?> zł </li>
-                            <li class="collection-item">Wyżywienie / 1 os. : <?php echo $foodpriceforperson ?> zł</li>
-                        </ul>
-                    </div>
-                    <div class="col s12 m6">
-                        <div class="card-panel grey lighten-3">
-                            <h5>Złóż zamówienie</h5>
-                            <form action="summary.php" method="post">
-                            <input type="hidden" name="id" VALUE="<?php echo $pid ?>">
-                            <input type="hidden" name="user_id" VALUE="<?php echo $_SESSION['id'] ?>">
-                                <p>
-                                    <label>
-                                        <input type="checkbox" name="food" class="filled-in" checked="checked"  />
-                                        <span>Wyżywienie</span>
-                                    </label>
-                                </p>
-                                <p>
-                                    <label>
-                                        <span>Od</span>
-                                        <div class="input-field">
-                                            <input type="text" class="datepicker" name="date1">
-                                        </div>
-                                    </label>
-                                </p>
-                                <p>
-                                    <label>
-                                        <span>Do</span>
-                                        <div class="input-field">
-                                            <input type="text" class="datepicker" name="date2">
-                                        </div>
-                                    </label>
-                                </p>
-                                <p>
-                                    <label>
-                                        <span>Ilość osób</span>
-                                        <div class="input-field">
-                                            <input type="text" name="persons">
-                                        </div>
-                                    </label>
-                                </p>                        
-                                <input type="submit" value="Kup teraz" class="btn" >
-                            </form>    
+                        <div class="input-field col s12">
+                            <input name="first_name" type="text" class="validate" value="<?php echo $first_name ?>">
+                            <label for="description">Imię</label>
                         </div>
+                        <div class="input-field col s12">
+                            <input name="last_name" type="text" class="validate"
+                                value="<?php echo $last_name ?>">
+                            <label for="priceforperson">Nazwisko</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input name="email" type="text" class="validate"
+                                value="<?php echo $email ?>">
+                            <label for="email">E-mail</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input name="phone" type="text" class="validate" value="<?php echo $phone ?>">
+                            <label for="startdate">Telefon</label>
+                        </div>                       
+
                     </div>
-                </div>
+                    <input type="submit" value="Aktualizuj" class="btn">
+                </form>
             </div>
-        </section>
+        </div>
 
 
         <!-- Footer -->

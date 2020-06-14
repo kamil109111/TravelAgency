@@ -5,12 +5,12 @@
 		$valueToSearch = $_POST['valueToSearch'];
 		// search in all table columns
 		// using concat mysql function
-		$query = "SELECT * FROM `orders` WHERE CONCAT(`id`) LIKE '%".$valueToSearch."%'";
+		$query = "SELECT * FROM `users` WHERE CONCAT(`last_name`) LIKE '%".$valueToSearch."%'";
 		$search_result = filterTable($query);	
 	}
 	else
 	{
-		$query = "SELECT * FROM `orders`";
+		$query = "SELECT * FROM `users`";
 		$search_result = filterTable($query);
 	}
 
@@ -89,11 +89,11 @@
         <div class="container">
             <div class="row">
                 <div class="col s12">
-                    <h3>Wyszukaj Zamówienie</h3>
+                    <h3>Wyszukaj użytkownika</h3>
                     <div class="input-field">
-                        <form action="orders_admin.php" method="post">
+                        <form action="users_admin.php" method="post">
                             <input type="text" name="valueToSearch" class="white grey-text autocomplete"
-                                id="autocomplete-input" placeholder="Id zamówienia...">
+                                id="autocomplete-input" placeholder="Nazwisko użytkownika">
                             <input type="submit" name="search" value="Szukaj">
                     </div>
                 </div>
@@ -106,14 +106,7 @@
             <div class="row">
 
                 <!--Nagłówek sekcji-->
-                <h4 class="center"><span class="teal-text">Zarządzaj</span> Zamówieniami</h4>
-
-                <br><br>
-
-                <a href="add_order.php" class="waves-effect waves-light btn-large"><i
-                        class="material-icons right">add</i>Dodaj ofertę</a>
-
-                <br><br>
+                <h4 class="center"><span class="teal-text">Zarządzaj</span> Użytkownikami</h4>
 
                 <!-- Oferty z bazy danych -->
 
@@ -121,14 +114,13 @@
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Nazwa</th>
-                            <th>Użytkownik</th>
-                            <th>Od</th>
-                            <th>Do</th>
-                            <th>Ilość osób</th>
-                            <th>Wyżywienie</th>
-                            <th>Suma</th>
-                            <th>Status</th>
+                            <th>Imię</th>
+                            <th>Nazwisko</th>
+                            <th>Login<th>
+                            <th>E-mail</th>
+                            <th>Telefon</th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
 
@@ -136,25 +128,17 @@
                     <tbody>
                         <tr>
                             <td><?php echo $row['id'];?></td>
-                            <td><a
-                                    href='details_for_admin.php?pid=<?php echo $row['ad_id']?>'><?php echo $row['ad_id'];?></a>
-                            </td>
-                            <td><a
-                                    href='details_of_user.php?uid=<?php echo $row['user_id']?>'><?php echo $row['user_id'];?></a>
-                            </td>
-                            <td><?php echo $row['first_date'];?></td>
-                            <td><?php echo $row['second_date'];?></td>
-                            <td><?php echo $row['persons'];?></td>
-                            <td><?php if ($row['food'] == 1){echo "TAK";}else{echo "NIE";};?></td>
-
-                            <td><?php echo $row['overall'];?></td>
-                            <td><?php echo $row['status'];?></td>
-                            <td><a href='edit_order.php?pid=<?php echo $row['id']?>'>
+                            <td><?php echo $row['first_name'];?></td>
+                            <td><?php echo $row['last_name'];?></td>
+                            <td><?php echo $row['login'];?></td>
+                            <td><?php echo $row['email'];?></td>
+                            <td><?php echo $row['phone'];?></td>
+                            <td><a href='edit_user.php?pid=<?php echo $row['id']?>'>
                                     <span class="waves-effect blue darken-3 waves-light btn"><i
                                             class="material-icons">edit</i>edytuj</span>
                                 </a>
                             </td>
-                            <td><a href='delete_order_success.php?pid=<?php echo $row['id']?>'>
+                            <td><a href='delete_user_success.php?pid=<?php echo $row['id']?>'>
                                     <span class="waves-effect red darken-3 waves-light btn"><i
                                             class="material-icons">delete_forever</i>usuń</span>
                                 </a>

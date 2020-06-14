@@ -20,6 +20,7 @@ while ($row=mysqli_fetch_array($filter_Result))
     $foodpriceforperson=$row['foodpriceforperson'];
     $startdate=$row['startdate'];
     $finishdate=$row['finishdate'];
+    $user_id=$_POST['user_id'];
     $date1=$_POST['date1'];
     $date2=$_POST['date2'];
     $persons=$_POST['persons'];	
@@ -119,6 +120,7 @@ $overall=$accprice+$foodprice;
                 <h4>Łączna cena: <?php echo $overall ?> zł</h4>
                 <form action="success.php" method="post">
                     <input type="hidden" name="id" VALUE="<?php echo $id ?>">
+                    <input type="hidden" name="user_id" VALUE="<?php echo $user_id ?>">
                     <input type="hidden" name="date1" VALUE="<?php echo $date1 ?>">
                     <input type="hidden" name="date2" VALUE="<?php echo $date2 ?>">
                     <input type="hidden" name="persons" VALUE="<?php echo $persons ?>">

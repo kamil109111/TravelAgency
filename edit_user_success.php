@@ -1,9 +1,27 @@
-<!DOCTYPE html>
+<?php
+
+require_once "connect.php";
+
+$id=$_POST['id'];
+$first_name=$_POST['first_name'];
+$last_name=$_POST['last_name'];
+$phone=$_POST['phone'];
+$login=$_POST['login'];
+$email=$_POST['email'];
+
+
+
+$sql = sprintf("UPDATE `users` SET `first_name`='$first_name',`last_name`='$last_name',`phone`='$phone',`login`='$login',`email`='$email' WHERE id = %d", $id);
+$connect->query($sql); 
+
+
+
+
+?>
+<!DOCTYPE HTML>
 <html lang="pl">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
@@ -17,13 +35,13 @@
     <title>Twoje wczasy</title>
 </head>
 
-<body id="admin" class="scrollspy">
+<body id="home" class="scrollspy">
     <!--Górne menu pasek sticky -->
     <div class="navbar-fixed">
         <nav class="teal">
             <div class="container">
                 <div class="nav-wrapper">
-                    <a href="#" class="brand-logo">Panel administratora</a>
+                    <a href="#" class="brand-logo">Twoje wczasy</a>
                     <a href="#" data-target="mobile-nav" class="sidenav-trigger">
                         <!--Jeśli zmniejszymy okno pojawi się hamburger menu -->
                         <i class="material-icons">menu</i>
@@ -32,17 +50,12 @@
                     <!--Wyrównanie do prawej i chowaj jeśli zmniejszy się okno -->
                     <ul class="right hide-on-med-and-down">
                         <li>
+                            <a href="users_admin.php">Wróć do ofert</a>
+                        </li>
+                        <li>
                             <a href="index.php">Strona domowa</a>
                         </li>
-                        <li>
-                            <a href="advertisment_admin.php">Zarządzaj ofertami</a>
-                        </li>
-                        <li>
-                            <a href="orders_admin.php">Zarządzaj zamówieniami</a>
-                        </li>
-                        <li>
-                            <a href="users_admin.php">Zarządzaj użytkownikami</a>
-                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -52,27 +65,37 @@
     <!--Hamburger menu, jeśli okno zostanie zmniejszone -->
     <ul class="sidenav" id="mobile-nav">
         <li>
+            <a href="users_admin.php">Wróć do ofert</a>
+        </li>
+        <li>
             <a href="index.php">Strona domowa</a>
-        </li>
-        <li>
-            <a href="advertisment_admin.php">Zarządzaj ofertami</a>
-        </li>
-        <li>
-            <a href="orders_admin.php">Zarządzaj zamówieniami</a>
-        </li>
-        <li>
-            <a href="users_admin.php">Zarządzaj użytkownikami</a>
         </li>
     </ul>
 
+    <section id="success">
+        <div class="container">
+            <h2 class="center">
+                <span class="teal-text">Sukces!</span>
+                <hr>
+            </h2>
+
+            <div class="center">
+                <br><br>
+                <i class="teal-text darken-5 large material-icons">check</i>
+                <br><br>
+                <h5>Dane oferta zostały zaktualizowane.</h5>
+                <br><br>
+                <a href="users_admin.php" class="waves-effect waves-light btn-large"><i
+                        class="material-icons left">check</i>Przejdź do listy użytkowników</a>
+            </div>
+            <br><br>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="section teal darken-2 white-text center">
         <p class="flow-text">Twoje Wczasy &copy; 2020 </p>
     </footer>
-
-
-
 
     <!--JavaScript at end of body for optimized loading-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -119,6 +142,17 @@
     // Po kliknięciu w menu na jakiś link, strona nie będzię przeskakiwać tylko przewijać do danej sekcji 
     const ss = document.querySelectorAll('.scrollspy');
     M.ScrollSpy.init(ss, {});
+
+    //Datapicker
+
+    const dp = document.querySelectorAll('.datepicker');
+    M.Datepicker.init(dp, {
+        showClearBtn: true,
+    });
+
+    //Selector
+    const os = document.querySelectorAll('select');
+    M.FormSelect.init(os, {});
     </script>
 
 </body>

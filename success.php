@@ -3,6 +3,7 @@
 require_once "connect.php";
 
 $id=$_POST['id'];
+$user_id=$_POST['user_id'];
 $date1=$_POST['date1'];
 $date2=$_POST['date2'];
 $persons=$_POST['persons'];
@@ -10,7 +11,7 @@ $food=$_POST['food'];
 $overall=$_POST['overall'];
 
 
-$sql = "INSERT INTO `orders`(`id`, `ad_id`, `first_date`, `second_date`, `persons`, `food`, `overall`, `status`) VALUES ('','$id','$date1','$date2','$persons','$food','$overall','')";
+$sql = "INSERT INTO `orders`(`id`, `ad_id`, `first_date`, `second_date`, `persons`, `food`, `overall`, `status`,`user_id`) VALUES ('','$id','$date1','$date2','$persons','$food','$overall','','$user_id')";
 $result = $connect->query($sql); 
 
 
